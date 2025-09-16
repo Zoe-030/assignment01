@@ -2,21 +2,22 @@
 import os
 from dotenv import load_dotenv
 
-
+# Load all the stuff we wrote inside the .env file
+# (like username, password, db name, etc.)
 load_dotenv()
 
-class Settings:
+class Config:
     
-    DB_USER: str = os.getenv("DB_USER", "postgres")
-    #password
-    DB_PASSWORD: str = os.getenv("DB_PASSWORD", "password")
-    DB_HOST: str = os.getenv("DB_HOST", "localhost")
-    DB_PORT: str = os.getenv("DB_PORT", "5432")
-    DB_NAME: str = os.getenv("DB_NAME", "healthdb")
+    db_user: str = os.getenv("DB_USER", "postgres")       # who logs in to the database
+    db_password: str = os.getenv("DB_PASSWORD", "password")  # the key 
+    db_host: str = os.getenv("DB_HOST", "localhost")      # where the database
+    db_port: str = os.getenv("DB_PORT", "5432")           
+    db_name: str = os.getenv("DB_NAME", "healthdb")       # name of the database 
 
- 
     @property
-    def DATABASE_URL(self):
-        return f"postgresql+psycopg2://{self.DB_USER}:{self.DB_PASSWORD}@{self.DB_HOST}:{self.DB_PORT}/{self.DB_NAME}"
+    def db_url(self):
+       
+        return f"postgresql+psycopg2://{self.db_user}:{self.db_password}@{self.db_host}:{self.db_port}/{self.db_name}"
 
-settings = Settings()
+# we make one Config object we can import anywhere else in our code
+config = Config()
