@@ -2,11 +2,11 @@
 # app/db.py
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base
-from app.config import settings
+from app.config import config 
 
 # Create database engine (connection to PostgreSQL)
 engine = create_engine(
-    settings.DATABASE_URL,
+    config.db_url,
     echo=True,      # Print SQL statements for debugging
     future=True     # Use SQLAlchemy 2.0 style API
 )
