@@ -46,6 +46,8 @@ assignment01/
 
 ### 3.1 Create virtual environment
 ```bash
+cp ~/assignment01/.env ~/new_assignment01/ #if download one new file need copy .eny
+cd ~/Downloads/Yadi_Zhao_002317736_01
 python3 -m venv venv
 source venv/bin/activate
 ```
